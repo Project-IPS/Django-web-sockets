@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
 
 import os
 from channels.routing import ProtocolTypeRouter, URLRouter
-import tmdb_app.api.routing
+import tmdb_app.websockets.routing
 
 from django.core.asgi import get_asgi_application
 
@@ -19,7 +19,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tmdb.settings")
 application = ProtocolTypeRouter({
     "http" : get_asgi_application(),
     "websocket": URLRouter(
-        tmdb_app.api.routing.websocket_urlpatterns
+        tmdb_app.websockets.routing.websocket_urlpatterns
     )
 })
 
